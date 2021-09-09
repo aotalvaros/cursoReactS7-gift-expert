@@ -1,7 +1,13 @@
-import React from 'react'
+import React,{ useState, useEffect } from 'react' //useEffect: me permite ejecutar sierto codigo de una manera condicional
 
 export const GIfGrid = ({category}) => {
     // se recibe la categoria(category) y se va hacer peticion HTTP
+
+    const [count, setcount] = useState(0);
+
+    useEffect(()=>{ // se ejecuta esta instruccion cuando el componente es renderizado por primera vez
+        getGifs();
+    },[])
 
     const getGifs = async()=>{
 
@@ -20,11 +26,10 @@ export const GIfGrid = ({category}) => {
         console.log(gifs);
     }
 
-    getGifs();
-
     return (
         <div>
             <h3>{ category }</h3>
+            <button onClick={()=>setcount(count+1)}></button>
         </div>
     )
 }
