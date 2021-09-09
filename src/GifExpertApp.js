@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AddCategory } from "./components/AddCategory";
+import { GIfGrid } from "./components/GIfGrid";
 
 export const GifExpertApp = () => {
   
@@ -12,14 +13,19 @@ export const GifExpertApp = () => {
   return (
     <>
       <h2>GifExpertApp</h2>
-      <AddCategory setcategories={setcategories} />
+      <AddCategory setcategories={ setcategories } />
       <hr />
 
       <ol>
         {/* Se utilizara una expresion que recorra cada uno de los elementos del arreglo*/}
-        {categories.map((category) => {
-          return <li key={category}> {category}</li>;
-        })}
+        {
+        categories.map(category => (
+           <GIfGrid 
+              key={ category }
+              category={ category }
+            />
+        ))
+      }
       </ol>
     </>
   );
