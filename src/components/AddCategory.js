@@ -16,7 +16,7 @@ export const AddCategory = ({ setcategories }) => {
 
     //una validacion para que no sea vacio
     if (inputValue.trim().length > 2) {
-      setcategories((cats) => [...cats, inputValue]);
+      setcategories((cats) => [inputValue,...cats]);
       setInputValue("");
     }
 
@@ -25,7 +25,11 @@ export const AddCategory = ({ setcategories }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" value={inputValue} onChange={handleInputChange} />
+      <input 
+        type="text" 
+        value={inputValue} 
+        onChange={handleInputChange}
+        />
     </form>
   );
 };
