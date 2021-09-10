@@ -9,12 +9,11 @@ export const useFetchGifs = (category) => {
 
   useEffect(() => {// se ejecuta esta instruccion cuando el componente es renderizado por primera vez
     getGifs(category).then((imgs) => {
-      setTimeout(() => {
         setstate({
           data: imgs,
           loading: false,
         });
-      }, 3000);
+      
     });
   }, [category]);
 
