@@ -1,21 +1,17 @@
-import React,{ useState, useEffect } from 'react' //useEffect: me permite ejecutar sierto codigo de una manera condicional
-import { getGifs } from '../helpers/getGifs';
-import { GIfGridItem } from './GIfGridItem';
+import React from 'react' 
+import { useFetchGifs } from '../hooks/useFetchGifs'
+import {GIfGridItem} from './GIfGridItem'
+
 
 export const GIfGrid = ({ category }) => {
     // se recibe la categoria(category) y se va hacer peticion HTTP
 
-    const [images, setimages] = useState([]);
-
-    useEffect(()=>{ // se ejecuta esta instruccion cuando el componente es renderizado por primera vez
-        getGifs(category)
-            .then( setimages );
-    },[ category  ])
-
+    const {data:images,loading} = useFetchGifs(category);
 
     return (
         <>
             <h3>{ category }</h3>
+            { loading && <p>Cargando...</p> }
             <div className='card-grid'>
             
                 {
