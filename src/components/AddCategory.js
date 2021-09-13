@@ -8,6 +8,7 @@ export const AddCategory = ({ setcategories }) => {
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
+    console.log(inputValue);
   };
 
   //manejamos un enter en el input
@@ -15,9 +16,10 @@ export const AddCategory = ({ setcategories }) => {
     e.preventDefault();
 
     //una validacion para que no sea vacio
-    if (inputValue.trim().length > 2) {
+    if (inputValue.trim().length > 1) {
       setcategories((cats) => [inputValue,...cats]);
       setInputValue("");
+      
     }
 
     //validamos que cuando halla un nuevo componente en la lista haga la peticion HTTP
