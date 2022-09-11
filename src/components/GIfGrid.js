@@ -6,7 +6,7 @@ import {GIfGridItem} from './GIfGridItem'
 export const GIfGrid = ({ category }) => {
     // se recibe la categoria(category) y se va hacer peticion HTTP
 
-    const {data:images,loading} = useFetchGifs(category);
+    const { data:images, loading } = useFetchGifs(category);
 
     return (
         <>

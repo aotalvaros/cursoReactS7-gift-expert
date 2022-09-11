@@ -17,7 +17,7 @@ export const AddCategory = ({ setcategories }) => {
 
     //una validacion para que no sea vacio
     if (inputValue.trim().length > 1) {
-      setcategories((cats) => [inputValue,...cats]);
+      setcategories((cats) => [inputValue,...cats]); //inserte primero el resultado de la busqueda y luego las que ya estan 
       setInputValue("");
       
     }
