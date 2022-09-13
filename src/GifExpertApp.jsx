@@ -1,31 +1,32 @@
 import React, { useState } from "react";
-import { AddCategory } from "./components/AddCategory";
-import { GIfGrid } from "./components/GIfGrid";
+import { AddCategory, GIfGrid } from "./components";
 
 export const GifExpertApp = () => {
   
-    const [categories, setcategories] = useState([
-    "Mad Max",
-  ]);
+  const [categories, setCategories] = useState(["Matrix"]);
 
-  //Se crea otro componente que recibira categories como argumento "GifGrid.js"
+  const onAddCategory = ( newCategory ) => {
+    if ( categories.includes(newCategory) ) return;
+    setCategories([ newCategory, ...categories ]);
+}
 
   return (
     <>
-      <h2>GifExpertApp</h2>
-        <AddCategory setcategories={ setcategories } />
-      <hr />
+      <h1>GifExpertApp</h1>
 
+      <AddCategory 
+        onNewCategory={ (value) => onAddCategory(value) }
+      />
+      <hr />
       <ol>
-        {/* Se utilizara una expresion que recorra cada uno de los elementos del arreglo*/}
         {
-        categories.map(category => (
-           <GIfGrid //lista de gifs
-              key={ category }
-              category={ category }
-            />
-        ))
-      }
+          categories.map((category) =>( 
+            <GIfGrid //lista de gifs
+                key={ category }
+                category={ category }
+              />
+            ))
+        }
       </ol>
     </>
   );
